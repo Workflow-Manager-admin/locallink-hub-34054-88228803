@@ -1,35 +1,68 @@
-# Lightweight React Template for KAVIA
+# locallink-hub-34054-88228803
+
+## AI Skill Recommender Feature
+
+### Secure OpenAI Integration (Backend)
+
+- An API route (`src/api/skillRecommender.js`) securely calls OpenAI for skill suggestions.
+- **You must set** your OpenAI key (e.g., in `.env.local` or deployment env):
+  ```
+  OPENAI_API_KEY=sk-...
+  ```
+- Never expose your API key in frontend code.
+
+### React Integration
+
+- `SkillRecommenderContext` and `SkillRecommenderUI` power the frontend feature.
+- Access "AI Skill Recommender" via the sidebar navigation in the app.
+- To customize or extend:
+  - AI call and business logic: `src/SkillRecommenderContext.js`
+  - User UI/experience: `src/SkillRecommenderUI.js`
+
+### Local Development & Deployment
+
+- API route expects the `OPENAI_API_KEY` environment variable. For most React templates, backend routes require an environment variable setup compatible with your project structure (e.g., `.env.local`, Netlify/VERCEL env config, or your hosting provider's preferred system).
+- Do **not** commit your OpenAI key to source control.
+
+### Usage
+
+- From the navigation, users can access "AI Skill Recommender".
+- Users can enter their skills and interest areas, submit, and receive 3 locally-impactful AI-powered skill suggestions.
+
+---
+
+## Lightweight React Template for KAVIA
 
 This project provides a minimal React template with a clean, modern UI and minimal dependencies.
 
-## Features
+### Features
 
 - **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
 - **Modern UI**: Clean, responsive design with KAVIA brand styling
 - **Fast**: Minimal dependencies for quick loading times
 - **Simple**: Easy to understand and modify
 
-## Getting Started
+### Getting Started
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
-Runs the app in development mode.\
+Runs the app in development mode.  
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in interactive watch mode.
 
-### `npm run build`
+#### `npm run build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.  
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Customization
+### Customization
 
-### Colors
+#### Colors
 
 The main brand colors are defined as CSS variables in `src/App.css`:
 
@@ -43,7 +76,7 @@ The main brand colors are defined as CSS variables in `src/App.css`:
 }
 ```
 
-### Components
+#### Components
 
 This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
 
@@ -53,30 +86,30 @@ Common components include:
 - Navigation (`.navbar`)
 - Typography (`.title`, `.subtitle`, `.description`)
 
-## Learn More
+### Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+#### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+#### Analyzing the Bundle Size
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+#### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+#### Advanced Configuration
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+#### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+#### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
