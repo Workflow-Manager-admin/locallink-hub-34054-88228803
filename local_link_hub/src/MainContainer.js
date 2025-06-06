@@ -408,7 +408,17 @@ function MainContainer() {
 
   // PUBLIC_INTERFACE
   function MainContent() {
-    // For future: switch views by activeTab, now just shows all main modules in layout
+    // Show SkillRecommenderUI if aiSkill tab is active, else retain normal layout
+    if (activeTab === "aiSkill") {
+      return (
+        <div className="content-container">
+          <div className="content-main" style={{ width: "100%", flex: "1 1 0" }}>
+            <SkillRecommenderUI />
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="content-container">
         <div className="content-left">
@@ -422,12 +432,14 @@ function MainContainer() {
   }
 
   return (
-    <div className="llh-root">
-      <Sidebar />
-      <main className="llh-main">
-        <MainContent />
-      </main>
-    </div>
+    <SkillRecommenderProvider>
+      <div className="llh-root">
+        <Sidebar />
+        <main className="llh-main">
+          <MainContent />
+        </main>
+      </div>
+    </SkillRecommenderProvider>
   );
 }
 
