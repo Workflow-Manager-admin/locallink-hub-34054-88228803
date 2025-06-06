@@ -66,6 +66,12 @@ app.post("/api/skillRecommender", async (req, res) => {
   }
 });
 
+// PUBLIC_INTERFACE
+// Simple test GET endpoint for diagnostic/proxy check
+app.get("/api/skillRecommender/test", (req, res) => {
+  res.status(200).json({ msg: "SkillRecommender test route success", time: new Date().toISOString() });
+});
+
 // All remaining requests return React's index.html (SPA support for frontend routing)
 app.get("*", (req, res) => {
   res.sendFile(path.join(staticDir, "index.html"));
