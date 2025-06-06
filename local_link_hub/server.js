@@ -1,6 +1,7 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const bodyParser = require("body-parser");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -9,8 +10,13 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(bodyParser.json());
 
-// API route for skill recommender
+// Serve static files from build (production) or public (development)
+const staticDir = path.join(__dirname, "build");
+app.use(express.static(staticDir));
+
+// API route for skill recommender (SECURE! Key is NOT exposed to frontend)
 app.post("/api/skillRecommender", async (req, res) => {
+  // Get OpenAI API key from environment vars
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
   if (!OPENAI_API_KEY) {
@@ -58,6 +64,11 @@ app.post("/api/skillRecommender", async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message || "Unknown error" });
   }
+});
+
+// All remaining requests return React's index.html (SPA support for frontend routing)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(staticDir, "index.html"));
 });
 
 app.listen(PORT, () => {
