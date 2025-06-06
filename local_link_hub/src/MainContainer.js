@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./MainContainer.css";
+import { SkillRecommenderProvider } from "./SkillRecommenderContext";
+import SkillRecommenderUI from "./SkillRecommenderUI";
 
 // Dummy data for UI mock
 const geoCommunities = [
