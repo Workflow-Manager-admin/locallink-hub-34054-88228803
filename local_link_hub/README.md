@@ -1,5 +1,54 @@
 # locallink-hub-34054-88228803
 
+---
+
+## Local Development Setup (AI Skill Recommender)
+
+To get started with local development, follow these steps to securely configure your OpenAI API key, install dependencies, and run both backend and frontend.
+
+### 1. Create a `.env` file for your API key
+
+From the `local_link_hub/` directory, create a file called `.env` and add:
+```
+OPENAI_API_KEY=your-openai-api-key-here
+```
+_Never commit your real API key to source control or version history!_
+
+### 2. Install Backend Dependencies
+
+(If you haven't already) install all required dependencies for the Express backend and API integration:
+```
+npm install express node-fetch body-parser dotenv openai
+```
+
+### 3. Start the Backend Server
+
+From the same directory, launch:
+```
+node server.js
+```
+This starts the Express backend on [http://localhost:5000](http://localhost:5000), proxying API calls securely.
+
+### 4. Ensure API Proxy for React Development
+
+Make sure your `package.json` inside `local_link_hub/` contains:
+```json
+"proxy": "http://localhost:5000"
+```
+_This routes all `/api/...` requests from your React frontend to the Express backend automatically in dev mode, to securely hide API keys._
+
+### 5. Start the React Frontend
+
+In a separate terminal (also from `local_link_hub/`), run:
+```
+npm start
+```
+Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+Now, any use of the Skill Recommender (from the sidebar navigation) will POST to `/api/skillRecommender`, which the backend handles by talking to OpenAI, so your API keys are _never_ exposed to the browser.
+
+---
+
 ## AI Skill Recommender Feature
 
 ### Secure OpenAI Integration (Backend)
